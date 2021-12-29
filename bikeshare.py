@@ -126,13 +126,13 @@ def time_stats(df):
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
-    # TO DO: display the most common month
+    # Display the most common month
     print('The most common month: {}'.format(df['month'].mode()[0]))
 
-    # TO DO: display the most common day of week
+    # Display the most common day of week
     print('The most common day of week: {}'.format(df['day_of_week'].mode()[0]))
 
-    # TO DO: display the most common start hour
+    # Display the most common start hour
     df['hour'] = df['Start Time'].dt.hour
     print('The most common month: {}'.format(df['hour'].mode()[0]))
 
@@ -147,18 +147,18 @@ def station_stats(df):
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
 
-    # TO DO: display most commonly used start station
+    # Display most commonly used start station
     prompt_5_rows(df['Start Station'])
 
 
     print('The Most Popular Start Station - {}, {} times\n\n\n'.format(df['Start Station'].value_counts().index[0], df['Start Station'].value_counts()[0]))
 
 
-    # TO DO: display most commonly used end station
+    # Display most commonly used end station
     prompt_5_rows(df['End Station'])
     print('\nThe Most Popular End Station - {}, {} times\n\n\n'.format(df['End Station'].value_counts().index[0], df['End Station'].value_counts()[0]))
 
-    # TO DO: display most frequent combination of start station and end station trip
+    # Display most frequent combination of start station and end station trip
     df['Start-End Route'] = df['Start Station'] + ' --- ' + df['End Station']
     prompt_5_rows(df['Start-End Route'])
     print('\nThe Most Popular Route - {}, {} times\n\n\n'.format(df['Start-End Route'].value_counts().index[0], df['Start-End Route'].value_counts()[0]))
@@ -174,11 +174,11 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-    # TO DO: display total travel time
+    # Display total travel time
     print(df['Trip Duration'].sum())
 
 
-    # TO DO: display mean travel time
+    # Display mean travel time
     print(df['Trip Duration'].mean())
 
 
@@ -192,16 +192,16 @@ def user_stats(df):
     print('\nCalculating User Stats...\n')
     start_time = time.time()
 
-    # TO DO: Display counts of user types
+    # Display counts of user types
     print(df['User Type'].value_counts())
 
-    # TO DO: Display counts of gender
+    # Display counts of gender
     if 'Gender' in df:
         print(df['Gender'].value_counts())
     else:
         print('Gender stats cannot be calculated because Gender does not appear in the dataframe')
 
-    # TO DO: Display earliest, most recent, and most common year of birth
+    # Display earliest, most recent, and most common year of birth
     if 'Birth Year' in df:
         print('The earliest year of birth: {}'.format(df['Birth Year'].min()))
         print('The most recent year of birth: {}'.format(df['Birth Year'].max()))
