@@ -1,3 +1,4 @@
+#Explore US Bikeshare Data
 import time
 import pandas as pd
 import numpy as np
@@ -10,7 +11,7 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 def prompt_5_rows(df):
      """
     Asks user how many 5 more rows they want to view.
-    
+
     """
     view_data = input('Would you like to view 5 rows of individual {} data? Enter yes or no?  '.format(df.name)).lower()
     if view_data == 'yes':
@@ -94,7 +95,7 @@ def load_data(city, month, day):
         df - Pandas DataFrame containing city data filtered by month and day
     """
     df = pd.read_csv(CITY_DATA[city])
-    
+
     # convert the Start Time column to datetime
     df['Start Time'] = pd.to_datetime(df['Start Time'])
 
@@ -115,7 +116,7 @@ def load_data(city, month, day):
     if day != 'all':
         # filter by day of week to create the new dataframe
         df = df[df['day_of_week'] == day.title()]
-   
+
     return df
 
 
@@ -135,7 +136,7 @@ def time_stats(df):
     df['hour'] = df['Start Time'].dt.hour
     print('The most common month: {}'.format(df['hour'].mode()[0]))
 
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
@@ -148,8 +149,8 @@ def station_stats(df):
 
     # TO DO: display most commonly used start station
     prompt_5_rows(df['Start Station'])
-    
-    
+
+
     print('The Most Popular Start Station - {}, {} times\n\n\n'.format(df['Start Station'].value_counts().index[0], df['Start Station'].value_counts()[0]))
 
 
@@ -193,7 +194,7 @@ def user_stats(df):
 
     # TO DO: Display counts of user types
     print(df['User Type'].value_counts())
-    
+
     # TO DO: Display counts of gender
     if 'Gender' in df:
         print(df['Gender'].value_counts())
